@@ -20,6 +20,14 @@ public class Dino : MonoBehaviour
             isJumped = true;
             rb.AddForce(Vector2.up * 45f, ForceMode2D.Impulse);
         }
+
+        if(Input.GetKeyDown(KeyCode.DownArrow)) {
+            rb.gravityScale = 25;
+        }
+        
+        if(Input.GetKeyUp(KeyCode.DownArrow)) {
+            rb.gravityScale = 15;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
