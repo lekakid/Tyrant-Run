@@ -33,7 +33,7 @@ public class CactusController : MonoBehaviour
         }
     }
 
-    void Init() {
+    public void Init() {
         for(int i = 0; i < Cactuses.Count; i++) {
             Cactuses[i].Init();
         }

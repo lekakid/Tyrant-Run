@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dino : MonoBehaviour
 {
+    public GameManager Manager;
+
     Rigidbody2D rb;
     bool isJumped;
 
@@ -18,7 +20,7 @@ public class Dino : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && !isJumped) {
             isJumped = true;
-            rb.AddForce(Vector2.up * 45f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
         }
 
         if(Input.GetKeyDown(KeyCode.DownArrow)) {
@@ -26,7 +28,7 @@ public class Dino : MonoBehaviour
         }
         
         if(Input.GetKeyUp(KeyCode.DownArrow)) {
-            rb.gravityScale = 15;
+            rb.gravityScale = 13;
         }
     }
 
@@ -34,6 +36,13 @@ public class Dino : MonoBehaviour
     {
         if(other.collider.CompareTag("Floor")) {
             isJumped = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Cactus")) {
+            Manager.GameOver();
         }
     }
 }
