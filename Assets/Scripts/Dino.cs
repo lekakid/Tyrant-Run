@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Dino : MonoBehaviour
 {
-    public GameManager Manager;
+    public GameManager Game;
+    public SoundManager Sound;
 
     Rigidbody2D rb;
     Animator animator;
@@ -25,9 +26,17 @@ public class Dino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y > -1.05f) {
+            isJumped = true;
+        }
+        else {
+            isJumped = false;
+        }
+
         if(Input.GetKeyDown(KeyCode.Space) && !isJumped) {
             isJumped = true;
             rb.AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
+            Sound.Play("btn-press");
         }
 
         if(Input.GetKey(KeyCode.DownArrow)) {
@@ -48,22 +57,17 @@ public class Dino : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.collider.CompareTag("Floor")) {
-            isJumped = false;
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Obstacle")) {
             animator.SetBool("isDie", true);
-            Manager.GameOver();
+            Sound.Play("gameover");
+            Game.GameOver();
         }
     }
 
     public void Reborn() {
         animator.SetBool("isDie", false);
+        rb.velocity = Vector2.down;
     }
 }

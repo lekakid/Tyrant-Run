@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreView : MonoBehaviour
 {
+    public SoundManager Sound;
+
     Animator animator;
     Text TextScore;
 
@@ -25,8 +27,12 @@ public class ScoreView : MonoBehaviour
     }
 
     public void Blink() {
+        if(isBlink)
+            return;
+
         isBlink = true;
         animator.SetBool("Blink", true);
+        Sound.Play("score");
     }
 
     public void StopBlink() {
