@@ -13,6 +13,7 @@ public class Dino : MonoBehaviour
     CapsuleCollider2D DownCollider;
 
     bool isJumped;
+    bool isDied;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class Dino : MonoBehaviour
             isJumped = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && !isJumped) {
+        if(Input.GetKeyDown(KeyCode.Space) && !isJumped && !isDied) {
             isJumped = true;
             rb.AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
             Sound.Play("btn-press");
@@ -61,6 +62,7 @@ public class Dino : MonoBehaviour
     {
         if(other.CompareTag("Obstacle")) {
             animator.SetBool("isDie", true);
+            isDied = true;
             Sound.Play("gameover");
             Game.GameOver();
         }
@@ -68,6 +70,7 @@ public class Dino : MonoBehaviour
 
     public void Reborn() {
         animator.SetBool("isDie", false);
+        isDied = false;
         rb.velocity = Vector2.down;
     }
 }
