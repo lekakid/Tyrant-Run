@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float DinoSpeed = 10f;
+    public float DinoDefaultSpeed = 22f;
+    public float DinoSpeed = 22f;
 
     public Dino Dino;
-    public ObstacleController CactusController;
+    public ObstacleController ObstacleController;
     public GameObject GameOverArea;
-    public Text ScoreView;
+    public ScoreView ScoreView;
     public Text HighScoreView;
     
-    double Score = 0;
-    double HighScore = 0;
+    float Score = 0;
+    float HighScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,21 +26,36 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Score += Time.deltaTime * 10;
-        ScoreView.text = string.Format("{0:00000}", Score);
+        if((int)Score != 0 && (int)Score % 100 == 0) {
+            ScoreView.Blink();
+        }
+        ScoreView.SetScore(Score);
+
+        if(Score > 500f) {
+            ObstacleController.Unlock();
+        }
+
+        DinoSpeed = DinoDefaultSpeed + (int)((Score > 1000f ? 1000f : Score)/125f);
+        float ratio = 1 - (Score > 1000f ? 1000f : Score) / 2000f;
+        ObstacleController.SetInterval(ratio);
     }
 
     public void GameOver() {
-        Time.timeScale = 0;
+        ScoreView.StopBlink();
+        HighScoreView.enabled = true;
+
         if(HighScore < Score) {
             HighScoreView.text = string.Format("HI {0:00000}", Score);
             HighScore = Score;
         }
         GameOverArea.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Restart() {
+        DinoSpeed = DinoDefaultSpeed;
         Score = 0;
-        CactusController.Init();
+        ObstacleController.Init();
         Dino.Reborn();
         GameOverArea.SetActive(false);
         Time.timeScale = 1;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public GameManager Manager;
+    public bool Bird;
 
     bool spawned;
 
@@ -14,7 +15,8 @@ public class Obstacle : MonoBehaviour
         if(!spawned) {
             return;
         }
-        transform.position += (Vector3)(Vector2.left * Manager.DinoSpeed * Time.deltaTime);
+        float speed = Manager.DinoSpeed + (Bird ? -2f : 0f);
+        transform.position += (Vector3)(Vector2.left * speed * Time.deltaTime);
 
         if(transform.position.x < -22f) {
             transform.position = new Vector2(22f, transform.position.y);

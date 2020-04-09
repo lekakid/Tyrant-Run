@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 1
 --- !u!1 &481168898
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 1
 --- !u!1 &746979985
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,8 +870,8 @@ MonoBehaviour:
   - {fileID: 604315536}
   - {fileID: 270738646}
   - {fileID: 980468315}
-  CoolRangeStart: 1
-  CoolRangeEnd: 3
+  DefaultIntervalStart: 1
+  DefaultIntervalEnd: 4
 --- !u!4 &926333800
 Transform:
   m_ObjectHideFlags: 0
@@ -964,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 1
 --- !u!58 &980468316
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1092,11 +1095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bbdfe0f62fa70449d8c5900bf541b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DinoSpeed: 30
+  DinoDefaultSpeed: 22
+  DinoSpeed: 22
   Dino: {fileID: 1195736491}
-  CactusController: {fileID: 926333799}
+  ObstacleController: {fileID: 926333799}
   GameOverArea: {fileID: 952845408}
-  ScoreView: {fileID: 1101781867}
+  ScoreView: {fileID: 1101781870}
   HighScoreView: {fileID: 1489240680}
 --- !u!4 &1073319544
 Transform:
@@ -1123,6 +1127,8 @@ GameObject:
   - component: {fileID: 1101781866}
   - component: {fileID: 1101781868}
   - component: {fileID: 1101781867}
+  - component: {fileID: 1101781869}
+  - component: {fileID: 1101781870}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1191,6 +1197,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101781865}
   m_CullTransparentMesh: 0
+--- !u!95 &1101781869
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101781865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a88c7da2d0879049a297ed826dc6fbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1101781870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101781865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b97d7efda58f848a06021aa7655dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144441617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1489240679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1994,6 +2031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 1
 --- !u!212 &442041647272772186
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2126,6 +2164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!70 &1023611691507599113
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2174,6 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!4 &1778507970576470655
 Transform:
   m_ObjectHideFlags: 0
@@ -2330,6 +2370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!4 &5707076380192116945
 Transform:
   m_ObjectHideFlags: 0
@@ -2442,6 +2483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!1 &6924049217539653760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,6 +2516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!4 &7022570283611244862
 Transform:
   m_ObjectHideFlags: 0
@@ -2520,6 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1073319543}
+  Bird: 0
 --- !u!70 &7257028548491562869
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

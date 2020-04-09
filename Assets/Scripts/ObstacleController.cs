@@ -5,16 +5,19 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     public List<Obstacle> Obstacles;
-    public float CoolRangeStart = 1.0f;
-    public float CoolRangeEnd = 4.0f;
+    public float DefaultIntervalStart = 1.0f;
+    public float DefaultIntervalEnd = 4.0f;
 
+    float IntervalStart = 1.0f;
+    float IntervalEnd = 4.0f;
     float CoolTime;
     float AccTime;
+    int Limit = 6;
 
     // Start is called before the first frame update
     void Start()
     {
-        CoolTime = Random.Range(CoolRangeStart, CoolRangeEnd);
+        CoolTime = Random.Range(IntervalStart, IntervalEnd);
     }
 
     // Update is called once per frame
@@ -25,13 +28,13 @@ public class ObstacleController : MonoBehaviour
         if(AccTime > CoolTime) {
             int index;
             do {
-                index = Random.Range(0, Obstacles.Count);
+                index = Random.Range(0, Limit);
             } while(Obstacles[index].isSpawned());
 
             Obstacles[index].Spawn();
 
             AccTime = 0;
-            CoolTime = Random.Range(CoolRangeStart, CoolRangeEnd);
+            CoolTime = Random.Range(IntervalStart, IntervalEnd);
         }
     }
 
@@ -39,5 +42,17 @@ public class ObstacleController : MonoBehaviour
         for(int i = 0; i < Obstacles.Count; i++) {
             Obstacles[i].Init();
         }
+        Limit = 6;
+        IntervalStart = 1.0f;
+        IntervalEnd = 4.0f;
+    }
+
+    public void Unlock() {
+        Limit = 10;
+    }
+
+    public void SetInterval(float Ratio) {
+        IntervalStart = DefaultIntervalStart * Ratio;
+        IntervalEnd = DefaultIntervalEnd * Ratio;
     }
 }
