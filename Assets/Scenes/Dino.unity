@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 165808941}
   - component: {fileID: 165808940}
   - component: {fileID: 165808939}
-  - component: {fileID: 165808942}
   m_Layer: 0
   m_Name: land2
   m_TagString: Floor
@@ -228,19 +227,6 @@ Transform:
   m_Father: {fileID: 750215819}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &165808942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165808938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a5d9da6542c52438df622076dfd3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 1073319543}
 --- !u!1 &199230894
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +786,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750215819}
+  - component: {fileID: 750215820}
   m_Layer: 0
-  m_Name: Background
+  m_Name: LandController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,6 +811,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750215820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750215818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb889b81a7496754098577f54918ed12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 1073319543}
+  Lands:
+  - {fileID: 1972488991}
+  - {fileID: 1413643233}
+  - {fileID: 165808938}
 --- !u!1 &926333798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bbdfe0f62fa70449d8c5900bf541b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DinoSpeed: 22
+  DinoSpeed: 30
   Dino: {fileID: 1195736491}
   CactusController: {fileID: 926333799}
   GameOverArea: {fileID: 952845408}
@@ -1379,7 +1383,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5052944993645903236, guid: 2ac2cf3d3ed059a429827d623eada2ac,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1446,7 +1450,6 @@ GameObject:
   - component: {fileID: 1413643236}
   - component: {fileID: 1413643235}
   - component: {fileID: 1413643234}
-  - component: {fileID: 1413643237}
   m_Layer: 0
   m_Name: land1
   m_TagString: Floor
@@ -1544,19 +1547,6 @@ Transform:
   m_Father: {fileID: 750215819}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1413643237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413643233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a5d9da6542c52438df622076dfd3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 1073319543}
 --- !u!1 &1489240678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1637,6 @@ GameObject:
   - component: {fileID: 1972488994}
   - component: {fileID: 1972488993}
   - component: {fileID: 1972488992}
-  - component: {fileID: 1972488995}
   m_Layer: 0
   m_Name: land0
   m_TagString: Floor
@@ -1745,19 +1734,6 @@ Transform:
   m_Father: {fileID: 750215819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1972488995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972488991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a5d9da6542c52438df622076dfd3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 1073319543}
 --- !u!1 &2042318312
 GameObject:
   m_ObjectHideFlags: 0
