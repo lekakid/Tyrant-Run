@@ -41,7 +41,7 @@ public class Dino : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Cactus")) {
+        if(other.CompareTag("Obstacle")) {
             Manager.GameOver();
         }
     }

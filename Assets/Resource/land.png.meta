@@ -109,7 +109,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ab8e27cbdc7b0e4fb58dfa92f9ab272
+      spriteID: c079276f4158edd47bb0b952f57f7fce
       internalID: -2083201322625240679
       vertices: []
       indices: 
@@ -119,7 +119,7 @@ TextureImporter:
       name: land_1
       rect:
         serializedVersion: 2
-        x: 400
+        x: 401
         y: 0
         width: 400
         height: 16
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68dde27714bce741aeb7aa884132393
+      spriteID: 72bba66aeb27d5c49941f4e2d3f8c846
       internalID: 5882408185683326576
       vertices: []
       indices: 
@@ -140,7 +140,7 @@ TextureImporter:
       name: land_2
       rect:
         serializedVersion: 2
-        x: 800
+        x: 802
         y: 0
         width: 400
         height: 16
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7d0ee4c7568a69478d186b896eba389
+      spriteID: b90ff7f35e904c44e9b55aa91664e044
       internalID: 124331726193865204
       vertices: []
       indices: 

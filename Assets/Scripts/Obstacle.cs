@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cactus : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     public GameManager Manager;
 
