@@ -32,5 +32,6 @@ public class Obstacle : MonoBehaviour
 
     public void Init() {
         transform.position = new Vector2(22f, transform.position.y);
+        spawned = false;
     }
 }

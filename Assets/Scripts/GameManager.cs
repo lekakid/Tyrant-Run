@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public float DinoSpeed = 10f;
 
+    public Dino Dino;
     public ObstacleController CactusController;
     public GameObject GameOverArea;
     public Text ScoreView;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void Restart() {
         Score = 0;
         CactusController.Init();
+        Dino.Reborn();
         GameOverArea.SetActive(false);
         Time.timeScale = 1;
     }
