@@ -45,27 +45,16 @@ public class Dino : MonoBehaviour
             _isJumped = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && !_isJumped && !_isDied) {
-            _isJumped = true;
-            rigidBody.AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
-            GameManager.Instance.SoundManager.Play("btn-press");
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            Jump();
         }
 
         if(Input.GetKey(KeyCode.DownArrow)) {
-            rigidBody.gravityScale = 25;
-
-            if(!_isJumped) {
-                normalCollider.enabled = false;
-                downCollider.enabled = true;
-                animator.SetBool("isDown", true);
-            }
+            Crouch();
         }
         
         if(Input.GetKeyUp(KeyCode.DownArrow)) {
-            rigidBody.gravityScale = 13;
-            normalCollider.enabled = true;
-            downCollider.enabled = false;
-            animator.SetBool("isDown", false);
+            Uncrouch();
         }
     }
 
@@ -85,5 +74,31 @@ public class Dino : MonoBehaviour
         rigidBody.velocity = Vector2.down;
 
         _isDied = false;
+    }
+
+    public void Jump() {
+        if(_isJumped || _isDied)
+            return;
+
+        _isJumped = true;
+        rigidBody.AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
+        GameManager.Instance.SoundManager.Play("btn-press");
+    }
+
+    public void Crouch() {
+        rigidBody.gravityScale = 25;
+
+        if(!_isJumped) {
+            normalCollider.enabled = false;
+            downCollider.enabled = true;
+            animator.SetBool("isCrouched", true);
+        }
+    }
+
+    public void Uncrouch() {
+        rigidBody.gravityScale = 13;
+        normalCollider.enabled = true;
+        downCollider.enabled = false;
+        animator.SetBool("isCrouched", false);
     }
 }

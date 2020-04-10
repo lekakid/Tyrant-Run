@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverArea;
     public ScoreView ScoreView;
     public Text HighScoreView;
+    public GameObject TouchArea;
     #endregion
 
     #region Property
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
             HighScoreView.text = string.Format("HI {0:00000}", _score);
         }
         GameOverArea.SetActive(true);
+        TouchArea.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
         ObstacleController.Init();
         Dino.Init();
         GameOverArea.SetActive(false);
+        TouchArea.SetActive(true);
         Time.timeScale = 1;
     }
 }
