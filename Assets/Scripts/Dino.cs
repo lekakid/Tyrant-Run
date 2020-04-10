@@ -72,6 +72,9 @@ public class Dino : MonoBehaviour
         _speed = DefaultSpeed;
         animator.SetBool("isDie", false);
         rigidBody.velocity = Vector2.down;
+        rigidBody.gravityScale = 13;
+        normalCollider.enabled = true;
+        downCollider.enabled = false;
 
         _isDied = false;
     }
