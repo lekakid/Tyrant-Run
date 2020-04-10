@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public ScoreView ScoreView;
     public Text HighScoreView;
     public GameObject TouchArea;
+    public GameObject LetterBox;
     #endregion
 
     #region Property
@@ -45,6 +46,12 @@ public class GameManager : MonoBehaviour
         }
 
         _soundManager = GetComponent<SoundManager>();
+
+        switch(Application.platform) {
+            case RuntimePlatform.Android:
+                LetterBox.SetActive(true);
+                break;
+        }
     }
 
     // Update is called once per frame
