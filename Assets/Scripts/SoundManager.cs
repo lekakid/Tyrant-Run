@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    AudioSource player;
-
     [SerializeField]
-    public AudioClip[] clips;
-    Dictionary<string, AudioClip> dic;
+    public AudioClip[] AudioClips;
 
-    // Start is called before the first frame update
-    void Start()
+    AudioSource _audioPlayer;
+    Dictionary<string, AudioClip> _dic;
+
+    void Awake()
     {
-        player = GetComponent<AudioSource>();
-        dic = new Dictionary<string, AudioClip>();
+        _audioPlayer = GetComponent<AudioSource>();
+        _dic = new Dictionary<string, AudioClip>();
 
-        foreach(AudioClip audio in clips) {
-            dic.Add(audio.name, audio);
+        foreach(AudioClip audio in AudioClips) {
+            _dic.Add(audio.name, audio);
         }
     }
 
     public void Play(string name) {
-        player.PlayOneShot(dic[name]);
+        _audioPlayer.PlayOneShot(_dic[name]);
     }
 }

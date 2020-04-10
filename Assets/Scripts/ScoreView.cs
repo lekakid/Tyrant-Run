@@ -5,25 +5,23 @@ using UnityEngine.UI;
 
 public class ScoreView : MonoBehaviour
 {
-    public SoundManager Sound;
-
     Animator animator;
-    Text TextScore;
+    Text txtScore;
 
     bool isBlink;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
-        TextScore = GetComponent<Text>();
+        txtScore = GetComponent<Text>();
     }
 
     public void SetScore(float Score) {
         if(isBlink)
             return;
 
-        TextScore.text = string.Format("{0:00000}", Score);
+        txtScore.text = string.Format("{0:00000}", Score);
     }
 
     public void Blink() {
@@ -32,7 +30,7 @@ public class ScoreView : MonoBehaviour
 
         isBlink = true;
         animator.SetBool("Blink", true);
-        Sound.Play("score");
+        GameManager.Instance.SoundManager.Play("score");
     }
 
     public void StopBlink() {

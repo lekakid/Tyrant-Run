@@ -4,37 +4,41 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    [Header("Interval")]
+    public float IntervalMin = 1.0f;
+    public float IntervalMax = 4.0f;
+    [Header("Obstacles")]
     public List<Obstacle> Obstacles;
-    public float DefaultIntervalStart = 1.0f;
-    public float DefaultIntervalEnd = 4.0f;
 
-    float IntervalStart = 1.0f;
-    float IntervalEnd = 4.0f;
-    float CoolTime;
-    float AccTime;
-    int Limit = 6;
+    float _intervalMin;
+    float _intervalMax;
+    float _coolTime;
+    float _accumulateTime;
+    int _limit = 6;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        CoolTime = Random.Range(IntervalStart, IntervalEnd);
+        _intervalMin = IntervalMin;
+        _intervalMax = IntervalMax;
+        _coolTime = Random.Range(_intervalMin, _intervalMax);
     }
 
     // Update is called once per frame
     void Update()
     {
-        AccTime += Time.deltaTime;
+        _accumulateTime += Time.deltaTime;
 
-        if(AccTime > CoolTime) {
+        if(_accumulateTime > _coolTime) {
             int index;
             do {
-                index = Random.Range(0, Limit);
-            } while(Obstacles[index].isSpawned());
+                index = Random.Range(0, _limit);
+            } while(Obstacles[index].isSpawned);
 
             Obstacles[index].Spawn();
 
-            AccTime = 0;
-            CoolTime = Random.Range(IntervalStart, IntervalEnd);
+            _accumulateTime = 0;
+            _coolTime = Random.Range(_intervalMin, _intervalMax);
         }
     }
 
@@ -42,17 +46,17 @@ public class ObstacleController : MonoBehaviour
         for(int i = 0; i < Obstacles.Count; i++) {
             Obstacles[i].Init();
         }
-        Limit = 6;
-        IntervalStart = 1.0f;
-        IntervalEnd = 4.0f;
+        _limit = 6;
+        _intervalMin = 1.0f;
+        _intervalMax = 4.0f;
     }
 
     public void Unlock() {
-        Limit = 10;
+        _limit = 10;
     }
 
     public void SetInterval(float Ratio) {
-        IntervalStart = DefaultIntervalStart * Ratio;
-        IntervalEnd = DefaultIntervalEnd * Ratio;
+        _intervalMin = IntervalMin * Ratio;
+        _intervalMax = IntervalMax * Ratio;
     }
 }
