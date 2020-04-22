@@ -70,6 +70,7 @@ public class Dino : MonoBehaviour
 
     public void Init() {
         _speed = DefaultSpeed;
+        Uncrouch();
         animator.SetBool("isDie", false);
         rigidBody.velocity = Vector2.down;
         rigidBody.gravityScale = 13;
